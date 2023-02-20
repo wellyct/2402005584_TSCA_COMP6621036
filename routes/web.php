@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ResetController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\UserManagementController;
+use App\Http\Controllers\ProductController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
@@ -31,9 +32,9 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('dashboard');
 	})->name('dashboard');
 
-	Route::get('billing', function () {
-		return view('billing');
-	})->name('billing');
+	Route::get('simulation', function () {
+		return view('simulation');
+	})->name('simulation');
 
 
 	Route::get('profile', function () {
@@ -47,11 +48,12 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('/user-management', [UserManagementController::class, 'index']);
 	Route::get('/user-management.create', [UserManagementController::class, 'create']);
+	
+	Route::get('/products', [ProductController::class, 'index']);
 
-
-	Route::get('tables', function () {
-		return view('tables');
-	})->name('tables');
+	// Route::get('tables', function () {
+	// 	return view('tables');
+	// })->name('tables');
 
 
     Route::get('static-sign-in', function () {
